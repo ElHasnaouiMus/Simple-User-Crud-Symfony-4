@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+	<div class="mx-auto my-4">
+		<h2>Ajouter utilisateur:</h2>
+		{{form_start(form)}}
+            {{ form_row(form.nom, {'label': 'Nom :','attr': {'placeholder': 'Ajouter un Nom'}}) }}
+            {{ form_row(form.prenom, {'label': 'Prenom :','attr': {'placeholder': 'Ajouter un Prenom'}}) }}
+            {{ form_row(form.username, {'label': 'Login :','attr': {'placeholder': 'Ajouter un Login'}}) }}
+            {{ form_row(form.password, {'label': 'Mot de pass :','attr': {'placeholder': 'Mot de Pass'}}) }}
+            {{ form_row(form.confirm_password, {'label': 'Confirmer le Mot de pass :','attr': {'placeholder': 'Confirmer Le Mot de pass'}}) }}
+            {{ form_row(form.email, {'label': 'Email :','attr': {'placeholder': 'Ajouter un Email'}}) }}
+            {{ form_row(form.phone, {'label': 'Tel :','attr': {'placeholder': 'Ajouter un Tel'}}) }}
+		<button class="btn btn-success" type="submit">Ajouter utilisateur</button>
+		{{form_end(form)}}
+	</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListUsersController!
+{% endblock %}
+
+{% block body %}
+	{% set continue = false %}
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				{% for column in columns %}
+					{% if column=='password' %}
+						{% set continue = true %}
+					{% endif %}
+					{% if not continue %}
+						<th scope="col">{{ column }}</th>
+					{% endif %}
+					{% if continue %}
+						{% set continue = false %}
+					{% endif %}
+				{% endfor %}
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr>
+					{% for column in columns %}
+						{% if column=='password' %}
+							{% set continue = true %}
+						{% endif %}
+						{% if not continue %}
+							<td>{{ attribute(user, column) }}</td>
+						{% endif %}
+						{% if continue %}
+							{% set continue = false %}
+						{% endif %}
+					{% endfor %}
+					<td>
+						<a target="popup" onclick="window.open('{{path('edit_user', { 'id': user.id })}}','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">
+							<button class="btn btn-info my-2 my-sm-0" type="submit">Modifier</button>
+						</a>
+						<a href="{{path('remove_user', { 'id': user.id })}}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce compte ?');">
+							<button class="btn btn-warning my-2 my-sm-0" type="submit">Supprimer</button>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
