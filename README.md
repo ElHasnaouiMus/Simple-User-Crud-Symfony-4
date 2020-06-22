@@ -1,5 +1,5 @@
 # Simple-User-Crud-Symfony-4
-# Change The Access to Register an admin user in the file config/packages/security.yaml
+### Change The Access to Register an admin user in the file config/packages/security.yaml
 
 Uncomment this line         - { path: ^/register, roles: ROLE_ADMIN }
 
