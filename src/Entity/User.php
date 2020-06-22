@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity("username", message="Cet Email est déja utilisé")
+ * @UniqueEntity(fields={"username"}, message="Ce login est déja utilisé")
  */
 class User implements UserInterface
 {
@@ -35,7 +35,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\username
      */
     private $username;
 
